@@ -27,7 +27,7 @@ jobs:
                   cp .npmrc server/
 
             - name: npm config
-              run: npm config ls
+              run: npm config ls --userconfig=/dev/null
 
             - name: npm cache
               run: |
