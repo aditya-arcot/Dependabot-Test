@@ -43,9 +43,14 @@ jobs:
                       echo "skip_publish=false" >> $GITHUB_OUTPUT
                     fi
                   else
-                    echo "Could not get published package version"
-                    echo "npm error: $PUBLISHED"
-                    exit 1
+                    if echo "$PUBLISHED" | grep -q "E404"; then
+                        echo "Package has never been published"
+                        echo "skip_publish=false" >> $GITHUB_OUTPUT
+                    else
+                        echo "Could not get published package version"
+                        echo "npm error: $PUBLISHED"
+                        exit 1
+                    fi
                   fi
 
             - name: setup node
