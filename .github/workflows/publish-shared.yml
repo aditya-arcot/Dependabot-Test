@@ -66,9 +66,7 @@ jobs:
               if: steps.check-version.outputs.skip_publish == 'false'
               run: |
                   cd shared/
-                  echo $NODE_ENV
                   npm ci
-                  npx tsc --showConfig
                   npm run build
 
             - name: publish
