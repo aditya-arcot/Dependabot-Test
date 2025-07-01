@@ -18,10 +18,6 @@ jobs:
               with:
                   node-version: 'lts/*'
                   check-latest: true
-                  cache: 'npm'
-                  cache-dependency-path: |
-                      shared/package-lock.json
-                      server/package-lock.json
 
             - name: install, build shared
               run: |
