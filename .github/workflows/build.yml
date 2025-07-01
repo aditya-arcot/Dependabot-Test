@@ -36,11 +36,11 @@ jobs:
             - name: install, build shared
               run: |
                   cd shared/
-                  npm ci --userconfig=/dev/null --globalconfig=/dev/null
+                  npm ci --userconfig=/dev/null
                   npm run build
 
             - name: install, build server
               run: |
                   cd server/
-                  npm ci --userconfig=/dev/null --globalconfig=/dev/null
+                  npm ci --userconfig=/dev/null
                   npm run build

@@ -72,7 +72,7 @@ jobs:
               if: steps.check-version.outputs.skip_publish == 'false'
               run: |
                   cd shared/
-                  npm ci --userconfig=/dev/null --globalconfig=/dev/null
+                  npm ci --userconfig=/dev/null
                   npm run build
 
             - name: publish
