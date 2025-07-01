@@ -21,11 +21,19 @@ jobs:
             - name: checkout
               uses: actions/checkout@v4
 
-            - name: add npm token
+            - name: create .npmrc
               run: |
                   cd shared/
                   echo "@aditya-arcot:registry=https://npm.pkg.github.com/" >> .npmrc
                   echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_NPM_TOKEN }}" >> .npmrc
+
+            - name: npm config
+              run: npm config ls
+
+            - name: npm cache
+              run: |
+                  npm cache verify
+                  npm cache clean --force
 
             - name: check if version already published
               id: check-version
@@ -64,7 +72,7 @@ jobs:
               if: steps.check-version.outputs.skip_publish == 'false'
               run: |
                   cd shared/
-                  npm ci
+                  npm ci --userconfig=/dev/null --globalconfig=/dev/null
                   npm run build
 
             - name: publish
