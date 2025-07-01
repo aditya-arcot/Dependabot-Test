@@ -22,28 +22,29 @@ jobs:
               uses: actions/checkout@v4
 
             - name: create .npmrc
+              working-directory: shared
               run: |
-                  cd shared/
                   echo "@aditya-arcot:registry=https://npm.pkg.github.com/" >> .npmrc
                   echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_NPM_TOKEN }}" >> .npmrc
 
             - name: npm config
+              working-directory: shared
               run: |
-                  cd shared/
-                  npm config ls --userconfig=/dev/null
+                  npm --userconfig=/dev/null config ls
 
             - name: npm cache
+              working-directory: shared
               run: |
-                  npm cache verify
-                  npm cache clean --force
+                  npm --userconfig=/dev/null cache verify
+                  npm --userconfig=/dev/null cache clean --force
 
             - name: check if version already published
               id: check-version
+              working-directory: shared
               run: |
-                  cd shared/
                   VERSION=$(jq -r .version package.json)
                   PACKAGE_NAME="@aditya-arcot/dependabot-test-shared"
-                  if PUBLISHED=$(npm view "$PACKAGE_NAME" version --registry=https://npm.pkg.github.com/ 2>&1); then
+                  if PUBLISHED=$(npm --userconfig=/dev/null view "$PACKAGE_NAME" version --registry=https://npm.pkg.github.com/ 2>&1); then
                     echo "Latest published version is $PUBLISHED"
                     if [ "$VERSION" = "$PUBLISHED" ]; then
                       echo "Package version $VERSION already published"
@@ -72,14 +73,14 @@ jobs:
 
             - name: install, build
               if: steps.check-version.outputs.skip_publish == 'false'
+              working-directory: shared
               run: |
-                  cd shared/
-                  npm ci --userconfig=/dev/null
-                  npm run build
+                  npm --userconfig=/dev/null ci
+                  npm --userconfig=/dev/null run build
 
             - name: publish
               if: steps.check-version.outputs.skip_publish == 'false'
+              working-directory: shared
               run: |
-                  cd shared/
-                  npm whoami --registry=https://npm.pkg.github.com/
-                  npm publish --access public
+                  npm --userconfig=/dev/null whoami --registry=https://npm.pkg.github.com/
+                  npm --userconfig=/dev/null publish --access public

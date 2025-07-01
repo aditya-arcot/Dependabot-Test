@@ -27,21 +27,21 @@ jobs:
                   cp .npmrc server/
 
             - name: npm config
-              run: npm config ls --userconfig=/dev/null
+              run: npm --userconfig=/dev/null config ls
 
             - name: npm cache
               run: |
-                  npm cache verify
-                  npm cache clean --force
+                  npm --userconfig=/dev/null cache verify
+                  npm --userconfig=/dev/null cache clean --force
 
             - name: install, build shared
+              working-directory: shared
               run: |
-                  cd shared/
-                  npm ci --userconfig=/dev/null
-                  npm run build
+                  npm --userconfig=/dev/null ci
+                  npm --userconfig=/dev/null run build
 
             - name: install, build server
+              working-directory: server
               run: |
-                  cd server/
-                  npm ci --userconfig=/dev/null
-                  npm run build
+                  npm --userconfig=/dev/null ci
+                  npm --userconfig=/dev/null run build
