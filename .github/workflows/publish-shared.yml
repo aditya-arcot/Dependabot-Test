@@ -28,7 +28,9 @@ jobs:
                   echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_NPM_TOKEN }}" >> .npmrc
 
             - name: npm config
-              run: npm config ls --userconfig=/dev/null
+              run: |
+                  cd shared/
+                  npm config ls --userconfig=/dev/null
 
             - name: npm cache
               run: |
