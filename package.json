@@ -3,7 +3,7 @@
         "knip": "knip",
         "prepare": "husky && npm run sort-package-jsons",
         "prettier": "prettier --write .",
-        "sort-package-jsons": "sort-package-json && sort-package-json shared/package.json && sort-package-json server/package.json && sort-package-json client/package.json"
+        "sort-package-jsons": "sort-package-json && sort-package-json shared/package.json && sort-package-json server/package.json"
     },
     "lint-staged": {
         "*": "prettier --write --ignore-unknown"
