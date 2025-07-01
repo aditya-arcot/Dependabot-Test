@@ -67,6 +67,7 @@ jobs:
               run: |
                   cd shared/
                   npm ci
+                  npx tsc --showConfig
                   npm run build
 
             - name: publish
