@@ -21,9 +21,10 @@ jobs:
 
             - name: create .npmrc
               run: |
-                  cd shared/
                   echo "@aditya-arcot:registry=https://npm.pkg.github.com/" >> .npmrc
                   echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_NPM_TOKEN }}" >> .npmrc
+                  cp .npmrc shared/
+                  cp .npmrc server/
 
             - name: npm config
               run: npm config ls
