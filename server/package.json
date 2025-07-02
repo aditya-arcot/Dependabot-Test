@@ -16,7 +16,7 @@
         ]
     },
     "dependencies": {
-        "@aditya-arcot/dependabot-test-shared": "^1.0.0",
+        "@aditya-arcot/dependabot-test-shared": "^1.0.2",
         "@tsconfig/node-lts": "^22.0.2",
         "@tsconfig/strictest": "^2.0.5"
     },
