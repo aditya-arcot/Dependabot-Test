@@ -1,4 +1,4 @@
-import { getTime } from '@aditya-arcot/dependabot-test-shared'
+import { getTime } from 'dependabot-test-shared'
 
 // eslint-disable-next-line no-console
 console.log(getTime())
