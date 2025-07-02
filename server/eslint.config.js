@@ -48,6 +48,13 @@ export default tseslint.config(
                 },
             ],
             'no-console': 'warn',
+            'no-restricted-imports': [
+                'warn',
+                {
+                    name: '@aditya-arcot/dependabot-test-shared',
+                    message: 'Use the shared barrel file instead',
+                },
+            ],
         },
     }
 )
