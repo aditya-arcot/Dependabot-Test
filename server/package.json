@@ -6,8 +6,8 @@
         "build": "rm -rf dist/ && tsc --sourceMap false",
         "dev": "tsc-watch --onSuccess 'npm run start'",
         "lint": "eslint --fix --max-warnings=0 src/",
-        "start": "node --inspect dist/main.js",
-        "start:deploy": "node dist/main.js"
+        "start": "tsx --inspect dist/main.js",
+        "start:deploy": "tsx dist/main.js"
     },
     "lint-staged": {
         "*": [
@@ -18,7 +18,8 @@
     "dependencies": {
         "@aditya-arcot/dependabot-test-shared": "^1.0.0",
         "@tsconfig/node-lts": "^22.0.2",
-        "@tsconfig/strictest": "^2.0.5"
+        "@tsconfig/strictest": "^2.0.5",
+        "tsx": "^4.20.3"
     },
     "devDependencies": {
         "@eslint/js": "^9.30.1",
