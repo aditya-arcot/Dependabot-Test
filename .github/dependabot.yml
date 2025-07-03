@@ -31,6 +31,7 @@ updates:
 
     - package-ecosystem: 'npm'
       directory: 'server'
+      target-branch: 'test'
       registries:
           - github-packages
       schedule:
