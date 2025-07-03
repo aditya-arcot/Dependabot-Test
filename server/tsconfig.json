@@ -6,7 +6,10 @@
     "compilerOptions": {
         "outDir": "dist",
         "sourceMap": true,
-        "baseUrl": "."
+        "baseUrl": ".",
+        "paths": {
+            "@dependabot-test-shared": ["src/dependabot-test-shared.ts"]
+        }
     },
     "include": ["src"]
 }
